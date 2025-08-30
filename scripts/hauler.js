@@ -12,16 +12,18 @@ document.addEventListener("click", (clickEvent) => {
   // Start a counter variable at 0
   let shipsOnHauler = 0;
   // Iterate all of the shipping ships
-  if (clickedHauler.classList.contains('hauler-item')) {
+  if (clickedHauler.classList.contains("hauler-item")) {
     for (const ships of cargoShips) {
+      // Does the haulerId foreign key match the id?
       if (ships.haulerId === parseInt(haulerId)) {
+        // Increase the counter by 1
         shipsOnHauler++;
       }
     }
-    // Does the haulerId foreign key match the id?
 
-    // Increase the counter by 1
-    window.alert(`This hauler is carrying ${shipsOnHauler} ships.`);
+    window.alert(
+      `${clickedHauler.dataset.name} is carrying ${shipsOnHauler} ships.`
+    );
   }
 });
 
