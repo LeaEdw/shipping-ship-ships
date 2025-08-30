@@ -1,28 +1,30 @@
-
 .details {
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .detail--column {
-    flex-basis: 24%;
-    margin: 2rem 2rem;
-    border: 2px dotted #CFF2FC;
-    padding: 1rem 1rem;
-
+  flex-basis: 24%;
+  margin: 2rem 2rem;
+  border: 2px dotted #cff2fc;
+  padding: 1rem 1rem;
+  flex-direction: column;
+  flex: 3;
 }
 
 .assignments {
-    padding: 1rem 7rem;
+  padding: 1rem 7rem;
 }
 
 body {
-    background-color: #7EAFE4;
+  background-color: #7eafe4;
 }
 
 li {
-    list-style: none;
-    padding: 5px;
-    margin: 5px;
-    background-color: #EEFFFF;
+  list-style: none;
+  padding: 5px;
+  margin: 5px;
+  background-color: #eeffff;
+ 
 }

@@ -42,7 +42,7 @@ document.addEventListener("click", (clickEvent) => {
 
 export const DockList = () => {
   const docks = getDocks();
-
+  docks.sort((a, b) => a.location.localeCompare(b.location));
   let docksHTML = "<ul>";
 
   for (const dock of docks) {
