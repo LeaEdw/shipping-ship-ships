@@ -11,7 +11,7 @@ export const DockList = () => {
                     data-city="${dock.location}"
                     data-id="${dock.id}"
                     data-capacity="${dock.maxCap}">
-                            ${dock.location}
+                            ${dock.location} can hold ${dock.maxCap} million tons of cargo.
                    </li>`;
     }
 

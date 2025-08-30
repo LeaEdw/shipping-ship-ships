@@ -1,7 +1,7 @@
 import { getShippingShips } from "./database.js"
 
 export const ShipList = () => {
-    const docks = getShippingShips()
+    const ships = getShippingShips()
 
     let cargoShipsHTML = "<ul>"
 

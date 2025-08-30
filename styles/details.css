@@ -7,7 +7,7 @@
 .detail--column {
     flex-basis: 24%;
     margin: 2rem 2rem;
-    border: 1px dotted goldenrod;
+    border: 2px dotted #CFF2FC;
     padding: 1rem 1rem;
 
 }
@@ -16,3 +16,13 @@
     padding: 1rem 7rem;
 }
 
+body {
+    background-color: #7EAFE4;
+}
+
+li {
+    list-style: none;
+    padding: 5px;
+    margin: 5px;
+    background-color: #EEFFFF;
+}

@@ -10,11 +10,11 @@ const applicationHTML = `
 <h1>Unified Sailing Coalition</h1>
 <article class="details">
     <section class="detail--column list details__cities">
-        <h2>Cargo Ships</h2>
+        <h2>Shipping Ships</h2>
         ${ShipList()}
     </section>
     <section class="detail--column list details__cities">
-        <h2>Haulers</h2>
+        <h2>Hauling Ships</h2>
         ${HaulerList()}
     </section>
     <section class="detail--column list details__cities">
