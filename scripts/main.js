@@ -1,7 +1,6 @@
 import { DockList } from "./dock.js";
 import { ShipList } from "./cargoShip.js";
 import { HaulerList } from "./hauler.js";
-import { createSchedule } from "./logs.js";
 
 
 const mainContainer = document.querySelector("#container");
