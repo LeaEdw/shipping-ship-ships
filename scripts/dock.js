@@ -22,19 +22,21 @@ document.addEventListener("click", (clickEvent) => {
     }
     /* Check whether the chosenDocks array is empty and create a message for whether 
     or not the dock has ships unloading or not. */
+      let shipsAtDock = chosenDock.join("\n- ");
 
-    if (chosenDock.length >= 1) {
-      let shipsAtDock = chosenDock.join(", ");
+    if (chosenDock.length > 1) {
       window.alert(
-        `The ${clickedDock.dataset.city} is currently unloading ${shipsAtDock}.`
+        `The ${clickedDock.dataset.city} dock is currently unloading ${chosenDock.length} ships: \n- ${shipsAtDock}`
       );
-    } else if ( chosenDock.length === 0) {
-        window.alert(
-            `The ${clickedDock.dataset.city} is currently unloading nothing.`
+    } else if ( chosenDock.length === 1) {
+        window.alert( `The ${clickedDock.dataset.city} dock is currently unloading ${chosenDock.length} ship: \n - ${shipsAtDock}`
+            
         )
-    } else {
-        window.alert(`Hmm, seems like we're lost at sea...`)
-    }
+    } else if(chosenDock < 1) {
+        window.alert(`There are currently ${chosenDock.length} ships being unloaded at the ${clickedDock.dataset.city} dock.`)
+    } else (
+        window.alert(`Seems like we're lost at sea.`)
+    )
   }
 });
 
