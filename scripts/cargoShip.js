@@ -32,7 +32,7 @@ export const ShipList = () => {
   const ships = getShippingShips();
   ships.sort((a, b) => a.name.localeCompare(b.name));
 
-  let cargoShipsHTML = "<ul>";
+  let cargoShipsHTML = `<ul class="ship-list">`;
 
   for (const ship of ships) {
     cargoShipsHTML += `<li 
@@ -44,7 +44,7 @@ export const ShipList = () => {
                    </li>`;
   }
 
-  cargoShipsHTML += "</ul>";
+  cargoShipsHTML += `</ul>`;
 
   return cargoShipsHTML;
 };

@@ -5,7 +5,8 @@
 }
 
 .detail--column {
-  flex-basis: 24%;
+  display: flex;
+  flex-basis: 20%;
   margin: 2rem 2rem;
   border: 2px dotted #cff2fc;
   padding: 1rem 1rem;
@@ -22,9 +23,17 @@ body {
 }
 
 li {
+  display: flex;
   list-style: none;
   padding: 5px;
   margin: 5px;
   background-color: #eeffff;
  
 }
+
+/* .ship-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: stretch;
+  justify-content: center;
+} */
