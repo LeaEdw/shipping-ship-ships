@@ -1,47 +1,46 @@
-import { getDocks, getHaulingShips } from "./database.js";
+import { getDocks, getDocksForHauler, getHaulingShips } from "./database.js";
 
-const haulingShips = getHaulingShips();
+const docks = getDocks();
+const haulers = getHaulingShips();
+const dockHaulers = getDocksForHauler();
 
 document.addEventListener("click", (clickEvent) => {
   const clickedDock = clickEvent.target;
 
-  // Make sure the target is the only part of the page that triggers this event -->
   if (clickedDock.classList.contains("dock-item")) {
-    // Get the ID of the dock
-    const dockId = clickedDock.dataset.id;
-    //Create an empty array that will hold the ships that are at the chosen dock.
-    let chosenDock = [];
+    let shipCount = [];
 
-    //Iterate the array of hauling ships
-    for (const hauler of haulingShips) {
-      //Does the dockId match the dockId of the current hauler?
-      if (hauler.dockId === parseInt(dockId)) {
-        //Add the matching ships to the chosenDock array
-        chosenDock.push(hauler.name);
+    for (const relation of dockHaulers) {
+
+      if (relation.id === parseInt(clickedDock.dataset.id)) {
+        for (const hauler of haulers) {
+          if (hauler.id === relation.id) {
+            shipCount.push(hauler.name);
+            break;
+          }
+        }
       }
     }
-    /* Check whether the chosenDocks array is empty and create a message for whether 
-    or not the dock has ships unloading or not. */
-      let shipsAtDock = chosenDock.join("\n- ");
 
-    if (chosenDock.length > 1) {
+    let shipsDisplay = shipCount.join("\n- ");
+
+    if (shipCount.length > 1) {
       window.alert(
-        `The ${clickedDock.dataset.city} dock is currently unloading ${chosenDock.length} ships: \n- ${shipsAtDock}`
+        `The ${clickedDock.dataset.city} dock is currently unloading ${shipCount.length} ships: \n- ${shipsDisplay}`
       );
-    } else if ( chosenDock.length === 1) {
-        window.alert( `The ${clickedDock.dataset.city} dock is currently unloading ${chosenDock.length} ship: \n - ${shipsAtDock}`
-            
-        )
-    } else if(chosenDock < 1) {
-        window.alert(`There are currently ${chosenDock.length} ships being unloaded at the ${clickedDock.dataset.city} dock.`)
-    } else (
-        window.alert(`Seems like we're lost at sea.`)
-    )
+    } else if (shipCount.length === 1) {
+      window.alert(
+        `The ${clickedDock.dataset.city} dock is currently unloading ${shipCount.length} ship: \n - ${shipsDisplay}`
+      );
+    } else if (shipCount.length === 0) {
+      window.alert(
+        `There are currently ${shipCount.length} ships being unloaded at the ${clickedDock.dataset.city} dock.`
+      );
+    } else window.alert(`Seems like we're lost at sea.`);
   }
 });
 
 export const DockList = () => {
-  const docks = getDocks();
   docks.sort((a, b) => a.location.localeCompare(b.location));
   let docksHTML = "<ul>";
 

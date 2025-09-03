@@ -20,10 +20,22 @@ document.addEventListener("click", (clickEvent) => {
         shipsOnHauler++;
       }
     }
-
-    window.alert(
-      `${clickedHauler.dataset.name} is carrying ${shipsOnHauler} ships.`
-    );
+      if (shipsOnHauler > 1) {
+        window.alert(
+          `${clickedHauler.dataset.name} is carrying ${shipsOnHauler} ships.`
+        );
+      } else if (shipsOnHauler === 1) {
+        window.alert(
+          `${clickedHauler.dataset.name} is carrying ${shipsOnHauler} ship.`
+        );
+      } else if (shipsOnHauler < 1) {
+        window.alert(
+          `${clickedHauler.dataset.name} is carrying ${shipsOnHauler} ships.`
+        );
+      } else {
+        window.alert(`Uh-oh... something went wrong.`);
+      
+    }
   }
 });
 
