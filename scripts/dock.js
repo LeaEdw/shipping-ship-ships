@@ -1,8 +1,8 @@
-import { getDocks, getDocksForHauler, getHaulingShips } from "./database.js";
+import { getDocks, getDocksAndTheirHaulers, getHaulingShips } from "./database.js";
 
 const docks = getDocks();
 const haulers = getHaulingShips();
-const dockHaulers = getDocksForHauler();
+const dockHaulers = getDocksAndTheirHaulers();
 
 document.addEventListener("click", (clickEvent) => {
   const clickedDock = clickEvent.target;
@@ -10,27 +10,35 @@ document.addEventListener("click", (clickEvent) => {
   if (clickedDock.classList.contains("dock-item")) {
     let shipCount = [];
 
-    for (const relation of dockHaulers) {
+    //Find the ID from the clicked item and match it to the id from the dockAndHaulers
 
-      if (relation.id === parseInt(clickedDock.dataset.id)) {
+    const dockId = clickedDock.dataset.id
+
+    for (const dockContract of dockHaulers) {
+      if (dockContract.dockId === parseInt(dockId))
         for (const hauler of haulers) {
-          if (hauler.id === relation.id) {
-            shipCount.push(hauler.name);
-            break;
-          }
-        }
-      }
+          if (dockContract.haulerId === parseInt(hauler.id))
+          shipCount.push(hauler.name)}
     }
+
+    //Add the object to a new array if it matches
+
+
+
+    //Loop through the haulers to get the names of the haulers for each dock and display the names in the click event.
+
+
+
 
     let shipsDisplay = shipCount.join("\n- ");
 
     if (shipCount.length > 1) {
       window.alert(
-        `The ${clickedDock.dataset.city} dock is currently unloading ${shipCount.length} ships: \n- ${shipsDisplay}`
+        `The ${clickedDock.dataset.city} dock can currently service ${shipCount.length} ships: \n- ${shipsDisplay}`
       );
     } else if (shipCount.length === 1) {
       window.alert(
-        `The ${clickedDock.dataset.city} dock is currently unloading ${shipCount.length} ship: \n - ${shipsDisplay}`
+        `The ${clickedDock.dataset.city} dock can currently service ${shipCount.length} ship: \n - ${shipsDisplay}`
       );
     } else if (shipCount.length === 0) {
       window.alert(

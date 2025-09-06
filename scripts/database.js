@@ -113,7 +113,7 @@ export const getShippingShips = () => {
   return structuredClone(database.shippingShips);
 };
 
-export const docksAndHaulers = () => {
+export const getDocksAndTheirHaulers = () => {
   //This function will create a structured clone and export it. 
-  return structuredClone(database.dockHaulers)
+  return structuredClone(database.dockHaulers);
 }
